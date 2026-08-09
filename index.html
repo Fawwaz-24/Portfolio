@@ -58,23 +58,27 @@
     animation: killSplash 0s 2.9s forwards;
   }
 
-  /* Top Shutter (Pure Black, No Borders) */
+  /* Top Shutter (Overlapped slightly to prevent hairline gaps) */
   .splash-screen::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 50vh;
+    height: 51vh; 
     background: #07090f;
+    border: none;
+    outline: none;
     animation: openTopShutter 0.7s 2.1s cubic-bezier(0.8, 0, 0.2, 1) forwards;
   }
 
-  /* Bottom Shutter (Pure Black, No Borders) */
+  /* Bottom Shutter */
   .splash-screen::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 50vh;
+    height: 51vh;
     background: #07090f;
+    border: none;
+    outline: none;
     animation: openBottomShutter 0.7s 2.1s cubic-bezier(0.8, 0, 0.2, 1) forwards;
   }
 
@@ -367,7 +371,7 @@
   }
   .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
   .exp-role { font-size: 17px; font-weight: 700; color: var(--text); }
-  .exp-period { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text2); background: var(--bg3); border: 1px solid var(--border2); padding: 3px 10px; }
+  .exp-period { font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text2); background: var(--bg3); border: 1px solid var(--border2); padding: 3px 10px; white-space: nowrap; }
   .exp-company { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--accent2); margin-bottom: 1rem; letter-spacing: 0.05em; }
   .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
   .exp-bullets li { font-size: 14px; color: var(--text3); padding-left: 1.25rem; position: relative; line-height: 1.7; }
@@ -459,6 +463,7 @@
 <div class="page-wrapper">
 
   <nav>
+    <a href="#hero" class="nav-logo">FA // Portfolio</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#education">Education</a></li>
@@ -497,7 +502,7 @@
     <div class="about-grid">
       <div class="about-text">
         <p>I'm a <strong>Mechanical Engineering graduate</strong> currently pursuing my M.Tech in Computational & Experimental Mechanics at IIT Madras, with a CGPA of 9.08.</p>
-        <p>My work spans <strong>nonlinear FEA, advanced structural simulation, and precision CAD design</strong> — from modelling Airbus A320 wing deflections using Discrete Differential Geometry to running explicit dynamic impact simulations with user-defined VUMAT subroutines in Abaqus.</p>
+        <p>My work spans <strong>nonlinear FEA, advanced structural simulation, and precision CAD design</strong> — from modelling large-deformation wing deflections using Discrete Differential Geometry to running explicit dynamic impact simulations with user-defined VUMAT subroutines in Abaqus.</p>
         <p>Prior to IIT Madras, I gained hands-on industrial experience at <strong>Larsen & Toubro's Nuclear Business Unit</strong> at BARC Tarapur, managing fabrication of nuclear-grade components and supervising critical welding processes including SMAW and GTAW.</p>
       </div>
       <div class="about-highlights">
@@ -554,7 +559,7 @@
       </div>
       <div class="skill-category">
         <div class="skill-cat-title">CAD Software</div>
-        <div class="skill-tags"><span class="skill-tag highlight">CATIA V5</span><span class="skill-tag">SolidWorks</span><span class="skill-tag">Fusion 360</span></div>
+        <div class="skill-tags"><span class="skill-tag highlight">CATIA V5</span><span class="skill-tag highlight">SolidWorks</span><span class="skill-tag">Fusion 360</span></div>
       </div>
       <div class="skill-category">
         <div class="skill-cat-title">Programming</div>
@@ -574,6 +579,16 @@
     <div class="section-label">04 · Experience</div>
     <h2>Work history</h2>
     <div class="exp-timeline reveal">
+
+      <div class="exp-item">
+        <div class="exp-header"><div class="exp-role">Engineering Design & Analysis Intern</div><div class="exp-period">Jun – Aug 2026</div></div>
+        <div class="exp-company">NIVAARA</div>
+        <ul class="exp-bullets">
+          <li>Designed a modular hexagonal structure in <strong>SolidWorks</strong>, conceptualizing four distinct joint mechanisms evaluated against DFM and machinability constraints.</li>
+          <li>Executed static structural FEA in <strong>Ansys</strong> on assembly models exceeding 5 million nodes, resolving mesh convergence and contact modeling.</li>
+          <li>Tested the assembly against 1500 N, 3000 N, and asymmetric off-center loads, achieving a <strong>1.44 Factor of Safety</strong>.</li>
+        </ul>
+      </div>
 
       <div class="exp-item">
         <div class="exp-header"><div class="exp-role">Graduate Engineer Trainee</div><div class="exp-period">Jul – Dec 2024</div></div>
@@ -608,16 +623,32 @@
 
       <div class="project-card reveal">
         <div class="project-img-banner">
+          <img src="Screenshot 2026-07-19 172557.png" alt="NIVAARA Hexagonal Structure SolidWorks" onerror="this.style.display='none'" />
+          <div class="img-placeholder-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            <span>hexagonal frame · solidworks</span>
+          </div>
+        </div>
+        <div class="project-num">Project 01</div>
+        <div class="project-title">Modular Hexagonal Structure FEA</div>
+        <div class="project-subtitle">Engineering Design · NIVAARA</div>
+        <p class="project-desc">Designed a modular hexagonal frame with custom joint mechanisms, validating strength via static structural FEA on a 5-million-node assembly.</p>
+        <div class="project-tags"><span class="project-tag cyan">SolidWorks</span><span class="project-tag cyan">Ansys</span><span class="project-tag">DFM</span></div>
+        <div class="project-result">▲ 1.44 Factor of Safety · 5M+ Nodes</div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-img-banner">
           <img src="image_81579d.jpg" alt="Wing von Mises stress" onerror="this.style.display='none'" />
           <div class="img-placeholder-text">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
             <span>wing stress contour · ansys</span>
           </div>
         </div>
-        <div class="project-num">Project 01</div>
+        <div class="project-num">Project 02</div>
         <div class="project-title">Nonlinear Discrete Timoshenko Rod Solver</div>
         <div class="project-subtitle">Wing Structural Analysis · IIT Madras</div>
-        <p class="project-desc">Geometrically exact 1D DDG rod solver for large-deformation bending of a tapered A320 wing.</p>
+        <p class="project-desc">Geometrically exact 1D DDG rod solver for large-deformation bending of a tapered wing.</p>
         <div class="project-tags"><span class="project-tag cyan">MATLAB</span><span class="project-tag cyan">DDG</span><span class="project-tag">ANSYS</span></div>
         <div class="project-result">▲ 1.2% error vs analytical · 196 DOFs</div>
       </div>
@@ -630,7 +661,7 @@
             <span>impact stress · abaqus/explicit</span>
           </div>
         </div>
-        <div class="project-num">Project 02</div>
+        <div class="project-num">Project 03</div>
         <div class="project-title">Non-Linear Dynamic Impact FEA</div>
         <div class="project-subtitle">Explicit Dynamics · Abaqus</div>
         <p class="project-desc">Integrated user-defined VUMAT subroutines in Abaqus/Explicit to model hyperelastic polyurethane foam impact.</p>
@@ -646,7 +677,7 @@
             <span>temp field · abaqus s4rt</span>
           </div>
         </div>
-        <div class="project-num">Project 03</div>
+        <div class="project-num">Project 04</div>
         <div class="project-title">Coupled Thermo-Mechanical Shell Analysis</div>
         <div class="project-subtitle">Abaqus · S4RT Elements</div>
         <p class="project-desc">Performed coupled thermo-mechanical simulations using Abaqus S4RT shell elements for transient thermal fields.</p>
@@ -662,7 +693,7 @@
             <span>physical build · catia v5</span>
           </div>
         </div>
-        <div class="project-num">Project 04</div>
+        <div class="project-num">Project 05</div>
         <div class="project-title">Bifacial Solar Panel Reflector System</div>
         <div class="project-subtitle">B.Tech Final Project · SPCE Mumbai</div>
         <p class="project-desc">Designed, manufactured, and structurally validated a bifacial solar reflector system, optimizing tilt via Tonatiuh.</p>
@@ -681,8 +712,14 @@
     <h2>Let's connect</h2>
     <p class="contact-sub">Open to design engineering, FEA simulation, and research opportunities.</p>
     <div class="contact-links">
-      <a href="mailto:fawwazumar786@gmail.com" class="contact-link">Email</a>
-      <a href="https://www.linkedin.com/in/fawwaz-ahmed-974a86222/" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="mailto:fawwazumar786@gmail.com" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email
+      </a>
+      <a href="https://www.linkedin.com/in/fawwaz-ahmed-974a86222/" target="_blank" class="contact-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
     </div>
     <p style="margin-top: 3rem; font-family: 'Space Mono', monospace; font-size: 11px; color: var(--text2);">
       AM25M007 · IIT Madras
